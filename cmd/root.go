@@ -7,15 +7,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/spf13/cobra"
 )
 
 type Task struct {
-	ID          int
-	Description string
-	Done        bool
-	Priority    string `json:"priority"`
+	ID          int       `json:"id"`
+	Description string    `json:"description"`
+	Done        bool      `json:"done"`
+	Priority    string    `json:"priority"`
+	RemindAt    time.Time `json:"remind_at"`
 }
 
 var tasks []Task

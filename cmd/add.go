@@ -5,10 +5,12 @@ package cmd
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/spf13/cobra"
 )
 
+var remindTime string
 var nextID int
 
 func getNextID() int {
@@ -32,12 +34,24 @@ var addCmd = &cobra.Command{
 			Description: args[0],
 			Priority:    "medium",
 		}
+
+		if remindTime != "" {
+			parsed, err := time.Parse("2006-01-02 15:04", remindTime)
+			if err != nil {
+				fmt.Println("❗ 提醒时间格式错误，请使用 '2025-04-17 15:00' 格式")
+				return
+			}
+			task.RemindAt = parsed
+		}
+
 		tasks = append(tasks, task)
+		saveTasks()
 		fmt.Println("✅ 添加任务:", task.Description)
 	},
 }
 
 func init() {
+	addCmd.Flags().StringVarP(&remindTime, "remind", "r", "", "提醒时间，例如 2025-04-17 10:00")
 	rootCmd.AddCommand(addCmd)
 
 	// Here you will define your flags and configuration settings.

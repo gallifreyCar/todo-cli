@@ -23,7 +23,11 @@ var listCmd = &cobra.Command{
 			if task.Done {
 				status = "✅"
 			}
-			fmt.Printf("[%d] %s [%s] %s\n", task.ID, status, task.Priority, task.Description)
+			remind := ""
+			if !task.RemindAt.IsZero() {
+				remind = task.RemindAt.Format("2006-01-02 15:04")
+			}
+			fmt.Printf("[%d] %s [%s] %s (提醒: %s)\n", task.ID, status, task.Priority, task.Description, remind)
 		}
 	},
 }
