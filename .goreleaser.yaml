@@ -1,0 +1,24 @@
+# .goreleaser.yaml
+project_name: todo
+builds:
+  - main: ./main.go
+    goos: [linux, darwin, windows]
+    goarch: [amd64]
+    ldflags: -s -w
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+
+release:
+  github:
+    owner: gallifreyCar
+    name: todo-cli
+
+checksum:
+  name_template: "checksums.txt"
+
