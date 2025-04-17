@@ -15,6 +15,7 @@ type Task struct {
 	ID          int
 	Description string
 	Done        bool
+	Priority    string `json:"priority"`
 }
 
 var tasks []Task

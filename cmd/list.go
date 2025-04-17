@@ -23,7 +23,7 @@ var listCmd = &cobra.Command{
 			if task.Done {
 				status = "✅"
 			}
-			fmt.Printf("[%d] %s %s\n", task.ID, status, task.Description)
+			fmt.Printf("[%d] %s [%s] %s\n", task.ID, status, task.Priority, task.Description)
 		}
 	},
 }

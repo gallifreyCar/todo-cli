@@ -30,6 +30,7 @@ var addCmd = &cobra.Command{
 		task := Task{
 			ID:          getNextID(),
 			Description: args[0],
+			Priority:    "medium",
 		}
 		tasks = append(tasks, task)
 		fmt.Println("✅ 添加任务:", task.Description)
