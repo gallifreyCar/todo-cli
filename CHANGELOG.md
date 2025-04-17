@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/gallifreyCar/todo-cli/compare/v1.0.0...v1.1.0) (2025-04-17)
+
+
+### Features
+
+* 增加remind指定，时间提醒功能 ([a0fabe3](https://github.com/gallifreyCar/todo-cli/commit/a0fabe3a9993d594fb65508004b15227b5169f20))
+
 ## 1.0.0 (2025-04-17)
 
 
